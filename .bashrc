@@ -166,7 +166,7 @@ pcinfo () {
 alias gdb="gdb -q"
 alias burp="java -jar /burp/BurpLoader.jar"
 alias r=reset
-alias aggiorna="apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y"
+alias aggiorna="apt-get update -y && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get -y autoremove & apt-get -y autoclean"
 alias cputemp='sensors | grep Core'
 alias cd..="cd .."
 alias diskspace="du -S | sort -n -r |more"
