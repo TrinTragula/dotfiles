@@ -75,9 +75,9 @@ function __prompt_command() {
 	PS1=""
 	
 	if [ $EXIT != 0 ]; then
-		PS1="${BRED}\A${BRED} (${BBLUE}\u${RED}@${BBLUE}\h${BRED})[${BYEL}\w${BBLUE}${BRED}]\$ ${NORMAL}"
+		PS1="${BRED}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
 	else
-		PS1="${BGREEN}\A${BRED} (${BBLUE}\u${RED}@${BBLUE}\h${BRED})[${BYEL}\w${BBLUE}${BRED}]\$ ${NORMAL}"
+		PS1="${BGREEN}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
 	fi
 }
 unset color_prompt force_color_prompt
@@ -172,7 +172,9 @@ alias cd..="cd .."
 alias diskspace="du -S | sort -n -r |more"
 #Never do something stupid again
 alias rm='rm -iv'
-
+alias matlab="cd /usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/ && ./matlab"
+alias chrome="cd /home/tucano/ && gksu -u tucano google-chrome"
+alias minecraft="java -jar /root/Scaricati/Minecraft.jar"
 
 
 #Color man pages when viwed with less
