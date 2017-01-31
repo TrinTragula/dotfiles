@@ -66,10 +66,7 @@ RED='\[\033[0;31m\]'
 BBLUE='\[\033[1;34m\]'
 BLUE='\[\033[0;34m\]'
 NORMAL='\[\033[00m\]'
-
-
 export PROMPT_COMMAND=__prompt_command  # Func to gen PS1 after CMDs
-
 function __prompt_command() {
 	local EXIT="$?"             # This needs to be first
 	PS1=""
@@ -81,9 +78,6 @@ function __prompt_command() {
 	fi
 }
 unset color_prompt force_color_prompt
-
-
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -164,9 +158,9 @@ pcinfo () {
 
 
 alias gdb="gdb -q"
-alias burp="java -jar /burp/BurpLoader.jar"
 alias r=reset
 alias aggiorna="apt-get update -y && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get -y autoremove & apt-get -y autoclean"
+alias chrome="cd /home/tucano/ && gksu -u tucano google-chrome"
 alias cputemp='sensors | grep Core'
 alias cd..="cd .."
 alias diskspace="du -S | sort -n -r |more"
