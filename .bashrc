@@ -47,16 +47,14 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
-
-
 # Prompt
 BGREEN='\[\033[1;32m\]'
 GREEN='\[\033[0;32m\]'
@@ -66,18 +64,24 @@ RED='\[\033[0;31m\]'
 BBLUE='\[\033[1;34m\]'
 BLUE='\[\033[0;34m\]'
 NORMAL='\[\033[00m\]'
+
+
 export PROMPT_COMMAND=__prompt_command  # Func to gen PS1 after CMDs
+
 function __prompt_command() {
-	local EXIT="$?"             # This needs to be first
-	PS1=""
-	
-	if [ $EXIT != 0 ]; then
-		PS1="${BRED}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
-	else
-		PS1="${BGREEN}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
-	fi
+        local EXIT="$?"             # This needs to be first
+        PS1=""
+
+        if [ $EXIT != 0 ]; then
+                PS1="${BRED}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
+        else
+                PS1="${BGREEN}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
+        fi
 }
 unset color_prompt force_color_prompt
+
+
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -94,17 +98,12 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
- 
+
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-##############################
-# PERSONAL STUFF STARTS HERE #
-##############################
-
 
 extract () {
      if [ -f $1 ] ; then
@@ -130,15 +129,16 @@ extract () {
 #netinfo - shows network information for your system
 netinfo ()
 {
-echo "--------------- Network Information ---------------"
-/sbin/ifconfig | awk /'inet addr/ {print $2}'
-/sbin/ifconfig | awk /'Bcast/ {print $3}'
-/sbin/ifconfig | awk /'inet addr/ {print $4}'
-/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
-myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
-echo "${myip}"
-echo "---------------------------------------------------"
+	echo "--------------- Network Information ---------------"
+	/sbin/ifconfig | awk /'inet addr/ {print $2}'
+	/sbin/ifconfig | awk /'Bcast/ {print $3}'
+	/sbin/ifconfig | awk /'inet addr/ {print $4}'
+	/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
+	myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
+	echo "${myip}"
+	echo "---------------------------------------------------"
 }
+
 #pcinfo - shows info about pc
 pcinfo () {
   printf "CPU: "
@@ -158,17 +158,12 @@ pcinfo () {
 
 
 alias gdb="gdb -q"
-alias r=reset
 alias aggiorna="apt-get update -y && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get -y autoremove & apt-get -y autoclean"
-alias chrome="cd /home/tucano/ && gksu -u tucano google-chrome"
 alias cputemp='sensors | grep Core'
 alias cd..="cd .."
 alias diskspace="du -S | sort -n -r |more"
 #Never do something stupid again
 alias rm='rm -iv'
-alias matlab="cd /usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/ && ./matlab"
-alias chrome="cd /home/tucano/ && gksu -u tucano google-chrome"
-alias minecraft="java -jar /root/Scaricati/Minecraft.jar"
 
 
 #Color man pages when viwed with less
@@ -179,12 +174,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -205,3 +194,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export PATH="$PATH:/home/tucano/.gem/ruby/2.5.0/bin"
