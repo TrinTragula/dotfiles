@@ -14,17 +14,14 @@ echo -e "\e[0;31m"
 echo '[*] Script di installazione sistema base Linux'
 echo -e "\e[0;34m"
 echo '[0/3] Per cominciare, aggiorniamo tutto.'
-sudo apt-get update -y; sudo apt-get -y upgrade; sudo apt-get -y dist-upgrade; sudo apt-get -y autoremove; sudo apt-get -y autoclean
+sudo apt -qq update -y && sudo apt -qq -y upgrade && sudo apt -qq -y dist-upgrade && sudo apt -qq -y autoremove && sudo apt-get -qq -y autoclean
 echo '[1/3] ||===>------------|| Installo pacchetti base..'
-sudo apt-get install git rar filezilla unrar
-cd
-echo '[2/3] ||=========>------|| Installo oh-my-zsh'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cd
-echo '[3/3] ||======>---------|| Creo il mio tanto amato .bashrc/.zshrc'
-mv .bashrc ~/.bashrc
-mv .zshrc ~/.zshrc
-cd
-echo '[*] Finito! Manca solo . .bashrc e . ./.zshrc
-echo '*****************************************************'
+sudo apt -qq install -y git rar unrar htop qemu-kvm dos2unix
+echo '[2/3] ||=========>------|| Installo il mio tanto amato .bashrc e TempleOS'
+cp .bashrc ~/.bashrc
+mkdir ~/.templeos && cd ~/.templeos && wget -q -m https://templeos.org/Downloads/QEMU/ 
+cd -
+echo '[3/3] ||===============>|| Attivo .bashrc'
+exec bash
+echo '[*] Finito!
 echo -e "\e[0m"

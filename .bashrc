@@ -126,44 +126,14 @@ extract () {
      fi
 }
 
-#netinfo - shows network information for your system
-netinfo ()
-{
-	echo "--------------- Network Information ---------------"
-	/sbin/ifconfig | awk /'inet addr/ {print $2}'
-	/sbin/ifconfig | awk /'Bcast/ {print $3}'
-	/sbin/ifconfig | awk /'inet addr/ {print $4}'
-	/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
-	myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
-	echo "${myip}"
-	echo "---------------------------------------------------"
-}
-
-#pcinfo - shows info about pc
-pcinfo () {
-  printf "CPU: "
-  cat /proc/cpuinfo | grep "model name" | head -1 | awk '{ for (i = 4; i <= NF; i++) printf "%s ", $i }'
-  printf "\n"
-
-  cat /etc/issue | awk '{ printf "OS: %s %s %s %s | " , $1 , $2 , $3 , $4 }'
-  uname -a | awk '{ printf "Kernel: %s " , $3 }'
-  uname -m | awk '{ printf "%s | " , $1 }'
-  printf "\n"
-  uptime | awk '{ printf "Uptime: %s %s %s", $3, $4, $5 }' | sed 's/,//g'
-  printf "\n"
-  cputemp | head -1 | awk '{ printf "%s %s %s\n", $1, $2, $3 }'
-  cputemp | tail -1 | awk '{ printf "%s %s %s\n", $1, $2, $3 }'
-  #cputemp | awk '{ printf "%s %s", $1 $2 }'
-}
-
-
 alias gdb="gdb -q"
-alias aggiorna="apt-get update -y && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get -y autoremove & apt-get -y autoclean"
-alias cputemp='sensors | grep Core'
+alias aggiorna="sudo apt update -y && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean"
 alias cd..="cd .."
-alias diskspace="du -S | sort -n -r |more"
 #Never do something stupid again
 alias rm='rm -iv'
+alias ll='ls -alh'
+#Starts TempleOS
+alias tos='qemu-system-x86_64 -boot d -cdrom ~/.templeos/templeos.org/Downloads/TempleOS.ISO -m 3333'
 
 
 #Color man pages when viwed with less
@@ -194,5 +164,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export PATH="$PATH:/home/tucano/.gem/ruby/2.5.0/bin"
