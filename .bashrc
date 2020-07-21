@@ -134,6 +134,8 @@ alias rm='rm -iv'
 alias ll='ls -alh'
 #Starts TempleOS
 alias tos='qemu-system-x86_64 -boot d -cdrom ~/.templeos/templeos.org/Downloads/TempleOS.ISO -m 3333'
+#Ssh into Aruba VPS
+alias aruba='ssh root@danielescarinci.com'
 
 
 #Color man pages when viwed with less
