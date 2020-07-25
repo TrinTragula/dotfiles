@@ -166,3 +166,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# for WSL
+export DISPLAY=:0.0
+
