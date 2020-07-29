@@ -73,9 +73,9 @@ function __prompt_command() {
         PS1=""
 
         if [ $EXIT != 0 ]; then
-                PS1="${BRED}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
+                PS1="${BRED}\A ${BRED}(${BBLUE}\u${BRED}) ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n${BBLUE}> ${NORMAL}"
         else
-                PS1="${BGREEN}\A ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n(${BBLUE}\u${RED}@${BBLUE}\h${BRED})${BRED}\$ ${NORMAL}"
+                PS1="${BGREEN}\A ${BRED}(${BBLUE}\u${BRED}) ${BRED}[${BYEL}\w${BBLUE}${BRED}]\n${BBLUE}> ${NORMAL}"
         fi
 }
 unset color_prompt force_color_prompt
@@ -134,9 +134,10 @@ alias rm='rm -iv'
 alias ll='ls -alh'
 #Starts TempleOS
 alias tos='qemu-system-x86_64 -boot d -cdrom ~/.templeos/templeos.org/Downloads/TempleOS.ISO -m 3333'
-#Ssh into Aruba VPS
+#ssh into Aruba VPS
 alias aruba='ssh root@danielescarinci.com'
-
+#For WSL
+alias codice='cd /mnt/c/git/'
 
 #Color man pages when viwed with less
 export LESS_TERMCAP_mb=$'\E[01;31m'
